@@ -16,9 +16,18 @@
 # add 'ly' instead.
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
+import re
+
 def verbing(s):
     # +++your code here+++
-    return
+    #if length is more than or equal to 3
+    if len(s) >= 3:
+        if (s[-3:] == 'ing'): # is the suffix is ing - return string with ly
+            return s+'ly'
+        else: # else add ing to the string
+            return s+'ing'
+    else: # if length is less than 3 return the same string
+        return s
 
 
 # E. not_bad
@@ -31,8 +40,15 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
     # +++your code here+++
-    return
-
+    patterns = ['not','bad']
+    val = s
+    val1 = s.find(patterns[0]) # find the position of patterns in the string
+    val2 = s.find(patterns[1])
+    if val2 > val1: # check if bad occurs after not
+        return re.sub('not (.*?) bad','good',s) # if yes, substitute everything after not
+        #upto bad with good
+    else: # of there is not bad after not, return the string
+        return s
 
 # F. front_back
 # Consider dividing a string into two halves.
@@ -43,7 +59,21 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
     # +++your code here+++
-    return
+    #find half the length of the string
+    half_a = len(a)/2
+    half_b = len(b)/2
+    string_val = ''#initiate a new string
+    if half_a  == int(half_a):# check if half of length is integer (even) or float (odd)
+        if half_b == int(half_b):# check if half of length is integer (even) or float (odd)
+             #if it is integer, split the strings and add them
+            string_val = a[:int(half_a)] + b[:int(half_b)] + a[int(half_a):] + b[int(half_b):]
+        else: # if b is odd, add the extra word to the first part
+             string_val = a[:int(half_a)] + b[:int(half_b)+1] + a[int(half_a):] + b[int(half_b)+1:]
+    elif half_b == int(half_b): # if only b is even, add the extra letter to first part of a
+        string_val = a[:int(half_a)+1] + b[:int(half_b)] + a[int(half_a)+1:] + b[int(half_b):]
+    else:#if both are odd, add the extra letter to first part of a and b
+        string_val = a[:int(half_a)+1] + b[:int(half_b)+1] + a[int(half_a)+1:] + b[int(half_b)+1:]
+    return string_val
 
 
 # Simple provided test() function used in main() to print

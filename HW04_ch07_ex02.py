@@ -21,15 +21,27 @@
 
 ###############################################################################
 # Imports
-
+import math
 
 # Body
+def eval_loop():
+	x = '' #variable to store user input
+	while x != 'done': #continue till done is typed
+		try:
+			x = input('Enter an expression: ')
+			if x == 'done': #if done is typed - return
+				return
+			print(eval(x))#evaluate expression
+		except: # throw exception if expression is invalid
+			print("Error in expression")
+
+
 
 
 ###############################################################################
 def main():
     pass  # Remove this line and uncomment below once eval_loop is defined.
-    # eval_loop()
+    eval_loop()
 
 if __name__ == '__main__':
     main()

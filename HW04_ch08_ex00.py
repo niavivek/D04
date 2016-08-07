@@ -20,6 +20,13 @@
 
 
 # Body
+def count(string,letter):
+	count = 0
+    #take each character and look for the letter
+	for s in string:
+		if s == letter:
+			count += 1#count if found
+	print ("Number of %s's in %s is %d" % (letter,string,count))
 
 
 ###############################################################################
@@ -27,7 +34,10 @@ def main():
 
     # Remove print("Hello World!") and add several functions calls to count()
     # below, passing various strings and letters
-    print("Hello World!")
+    count("value","u")
+    count("hello","l")
+    count("This world is amazingly awesome","a")
+    count("University of California Berkeley","e")
 
 
 if __name__ == '__main__':

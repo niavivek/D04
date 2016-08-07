@@ -16,6 +16,7 @@
 def any_lowercase1(s):
     """Explain what is wrong, if anything, here.
     """
+    #this is correct, it returns True if it finds a lower case character
     for c in s:
         if c.islower():
             return True
@@ -26,6 +27,9 @@ def any_lowercase1(s):
 def any_lowercase2(s):
     """Explain what is wrong, if anything, here.
     """
+    #this is not checking if the string has lower case character but 
+    #rather if the character 'c'
+    #is lower case
     for c in s:
         if 'c'.islower():
             return 'True'
@@ -37,16 +41,20 @@ def any_lowercase3(s):
     """Explain what is wrong, if anything, here.
     """
     for c in s:
-        flag = c.islower()
-    return flag
+        flag = c.islower() # flag is changed for every character - this means that if
+        #the last character checked is upper case -it would return false even if
+        #there are other lower case characters in the string
+    return flag #if string is empty flag is not assigned any value and also not initialized
+    #might throw error
 
 
 def any_lowercase4(s):
     """Explain what is wrong, if anything, here.
     """
-    flag = False
+    #nothing wrong here
+    flag = False # correct -flag is initialized
     for c in s:
-        flag = flag or c.islower()
+        flag = flag or c.islower()#correct-maintains the True case even if there is and upper case later
     return flag
 
 
@@ -54,9 +62,9 @@ def any_lowercase5(s):
     """Explain what is wrong, if anything, here.
     """
     for c in s:
-        if not c.islower():
+        if not c.islower():#returns false even if any character is upper case
             return False
-    return True
+    return True # returns true even for empty string
 
 
 ###############################################################################
@@ -66,7 +74,11 @@ def main():
     # call that function with a string for which the function returns
     # incorrectly.
     # ex.: any_lowercase_("thisstringmessesupthefunction")
-    print("Hello World!")
+    print(any_lowercase1("thisstringmessesupthefunction"))
+    print(any_lowercase2("thisstringmessesupthefunction"))
+    print(any_lowercase3("thisstringmessesupthefunction"))
+    print(any_lowercase4("thisstringmessesupthefunction"))
+    print(any_lowercase5("thisstringmessesupthefunction"))
 
 
 if __name__ == '__main__':
